@@ -3,16 +3,19 @@ package com.khush.aliftask.data.mapper
 import com.khush.aliftask.data.database.ItemDbModel
 import com.khush.aliftask.data.network.DataNetwork.BASE_URL
 import com.khush.aliftask.data.network.models.ItemData
+import org.json.JSONObject
 
 class ItemMapper {
-    fun mapDtoToDbModel(dto: ItemData) = ItemDbModel(
-        url = "$BASE_URL +/+ ${dto.url}",
-        startDate = dto.startDate,
-        endDate = dto.endDate,
-        name = dto.name,
-        icon = dto.icon,
-        venue = dto.venue.toString(),
-        objType = dto.objType,
-        loginRequired = dto.loginRequired
-    )
+    fun mapDbModelToEntity(dbModel: ItemDbModel): ItemData {
+        return ItemData(
+            url = "$BASE_URL/${dbModel.url}",
+            startDate = dbModel.startDate,
+            endDate = dbModel.endDate,
+            name = dbModel.name,
+            icon = dbModel.icon,
+            venue = JSONObject(dbModel.venue),
+            objType = dbModel.objType,
+            loginRequired = dbModel.loginRequired
+        )
+    }
 }

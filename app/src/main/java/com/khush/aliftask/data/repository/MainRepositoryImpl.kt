@@ -2,8 +2,11 @@ package com.khush.aliftask.data.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.khush.aliftask.data.database.AppDatabase
+import com.khush.aliftask.data.database.ItemDbModel
 import com.khush.aliftask.data.mapper.ItemMapper
+import com.khush.aliftask.data.network.DataNetwork.BASE_URL
 import com.khush.aliftask.data.network.models.ItemData
 import com.khush.aliftask.domain.ItemRepository
 
@@ -13,8 +16,18 @@ class MainRepositoryImpl(
 
     private val itemDao = AppDatabase.getInstance(application).itemDao()
     private val mapper = ItemMapper()
+    override fun getItemList(): LiveData<List<ItemData>> {
+        return Transformations.map(itemDao.getItemList()) {
+            it.map {
+                mapper.mapDbModelToEntity(it)
+            }
+        }
+    }
+    suspend fun setItemList(items: List<ItemData>){
+        itemDao.cleanDB()
 
-    override fun itemList(): LiveData<List<ItemData>> {
-        TODO("Not yet implemented")
+        for(item in items) {
+            itemDao.insertItem(ItemDbModel(BASE_URL+item.url, item.startDate, item.endDate, item.name, item.icon, item.venue.toString(), item.objType, item.loginRequired))
+        }
     }
 }

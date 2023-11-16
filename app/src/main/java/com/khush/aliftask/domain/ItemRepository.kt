@@ -4,5 +4,5 @@ import androidx.lifecycle.LiveData
 import com.khush.aliftask.data.network.models.ItemData
 
 interface ItemRepository {
-    fun itemList(): LiveData<List<ItemData>>
+    fun getItemList(): LiveData<List<ItemData>>
 }
