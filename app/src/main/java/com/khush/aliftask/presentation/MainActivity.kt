@@ -34,9 +34,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.getDataFlow()
         viewModel.itemList.observe(this){
             if (it != null) {
-                Log.d(TAG, it.toString())
+                //Log.d(TAG, it.toString())
                 adapter.submitList(it)
-                viewModel.itemList.removeObservers(this)
             }
         }
     }
