@@ -8,7 +8,7 @@ import org.json.JSONObject
 class ItemMapper {
     fun mapDbModelToEntity(dbModel: ItemDbModel): ItemData {
         return ItemData(
-            url = "$BASE_URL/${dbModel.url}",
+            url = dbModel.url,
             startDate = dbModel.startDate,
             endDate = dbModel.endDate,
             name = dbModel.name,

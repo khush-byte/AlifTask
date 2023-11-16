@@ -1,5 +1,6 @@
 package com.khush.aliftask.presentation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -41,7 +42,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun launchDetailActivity(url: String) {
-
+        val intent = Intent(this@MainActivity, WebViewActivity::class.java)
+        intent.putExtra("url", url)
+        startActivity(intent)
     }
 
     companion object {
