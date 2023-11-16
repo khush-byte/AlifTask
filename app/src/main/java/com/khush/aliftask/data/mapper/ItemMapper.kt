@@ -2,7 +2,7 @@ package com.khush.aliftask.data.mapper
 
 import com.khush.aliftask.data.database.ItemDbModel
 import com.khush.aliftask.data.network.DataNetwork.BASE_URL
-import com.khush.aliftask.data.network.models.ItemData
+import com.khush.aliftask.data.models.ItemData
 import org.json.JSONObject
 
 class ItemMapper {

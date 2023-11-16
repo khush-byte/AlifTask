@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.khush.aliftask.data.network.models.ItemData
+import com.khush.aliftask.data.models.ItemData
 
 @Database(entities = [ItemDbModel::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

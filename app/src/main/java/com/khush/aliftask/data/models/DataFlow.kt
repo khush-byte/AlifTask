@@ -1,4 +1,4 @@
-package com.khush.aliftask.data.network.models
+package com.khush.aliftask.data.models
 
 data class DataFlow(
     val data: List<ItemData>,

@@ -1,4 +1,4 @@
-package com.khush.aliftask.data.network.models
+package com.khush.aliftask.data.models
 
 import org.json.JSONObject
 
